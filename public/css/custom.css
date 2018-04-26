@@ -1,0 +1,9 @@
+.required_label {
+    display: block;
+}
+
+.required_label:after {
+    content: ' *';
+    color: red;
+    font-weight: bold;
+}
