@@ -28,7 +28,9 @@
       <!--HighSlide-->
       <link href="{{ asset('assets/lib/highslide/highslide.css')}}" rel="stylesheet" type="text/css">
       <link href="{{ asset('css/custom.css')}}" rel="stylesheet" type="text/css">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet" type="text/css">
       <!-- /global stylesheets -->
+
       @yield('style')
   </head>
 

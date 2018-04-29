@@ -1,10 +1,15 @@
 
 @extends('backLayout.app')
 @section('title')
-    department| Index
+    Department| Index
 @stop
 
 @section('style')
+
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.css" />
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
+
+
 
 @stop
 @section('content')
@@ -42,13 +47,7 @@
                         </button>
                     </a>
                 </li>
-                <li>
-                    <a href="{{URL::to('dashboard/department/index')}}">
-                        <button type="button" class="btn bg-green-800 btn-labeled btn-rounded legitRipple">
-                            <b><i class="icon-reload-alt"></i></b> Reset
-                        </button>
-                    </a>
-                </li>
+
                 <li>
                     <button type="button" class="btn bg-pink-800 btn-labeled btn-rounded legitRipple"
                             onclick="confirmAndSubmitForm()">
@@ -63,6 +62,7 @@
         <div class="panel-body">
             @include('flash::message')
         </div>
+        {!! Form::open(['route' => 'department.destroy','method'=>'DELETE','id'=>'formDelete']) !!}
 
 
         <div class="table-responsive">
@@ -84,7 +84,7 @@
                             </div>
                         </div>
                     </th>
-                    <th>Image</th>
+                  {{--  <th>Image</th>--}}
                     <th>
                         <a href="{{ URL::to('dashboard/department') }}">
                             Name
@@ -102,23 +102,25 @@
                             <span><i class="fa fa-sort text-success"></i></span>
                         </a>
                     </th>
-                    <th>View</th>
+
                     <th class="text-center">Edit</th>
                 </tr>
                 </thead>
                 <tbody>
+                <?php $i=1; ?>
                 @forelse($departments as $department)
                     <tr>
-                        <td>{{$department->id}}</td>
+                        <td>{{$i}}</td>
+                        <?php $i++; ?>
                         <td>
                             <div class="pretty p-default">
-
+                                {!! Form::checkbox('toDelete[]',$department->id, false,['class'=>'checkItem']) !!}
                                 <div class="state">
                                     <label></label>
                                 </div>
                             </div>
                         </td>
-                        <td>
+                       {{-- <td>
 
                             @if($department->file_name)
                                 <a href="{{ $department->file_name }}" class="highslide shadow-z-4"
@@ -133,16 +135,11 @@
                                          alt="{{ $department->name }}" class="img-thumbnail"/>
                                 </a>
                             @endif
-                        </td>
+                        </td>--}}
 
                                                 <td>{{$department->title}}</td>
                         <td>{{$department->created_at}}</td>
-                        <td class="text-center">
-                            <a href="{{route('department.show',$department->id)}}">
-                                <img src="{{ asset('assets/images/form-icon/view.png') }}" alt="Edit"
-                                     style="height:30px;width:30px;">
-                            </a>
-                        </td>
+
                         <td class="text-center">
                             <a href="{{route('department.edit',$department->id)}}">
                                 <img src="{{ asset('assets/images/edit.png') }}" alt="Edit"
@@ -173,7 +170,12 @@
                 </tbody>
 
             </table>
+
         </div>
+
+
+        {!! Form::close() !!}
+
 
     </div>
     <!-- /highlighting rows and columns -->
@@ -182,6 +184,7 @@
 @endsection
 
 @section('scripts')
+
 
 
 @endsection

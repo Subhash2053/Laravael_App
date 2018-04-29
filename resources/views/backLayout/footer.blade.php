@@ -1,7 +1,9 @@
 <!-- footer content -->
         <footer>
-          <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+          <div class="text-center">
+
+              © 2018. HRMS App
+              by <a href="#">Subhash GC</a>
           </div>
           <div class="clearfix"></div>
         </footer>
@@ -27,8 +29,7 @@
 <script src="{{asset('assets/lib/tinymce/tinymce.min.js')}}"></script>
 <script src="{{asset('assets/lib/tinymce/tinymce-init.js')}}"></script>
 
-
->
+<script type="text/javascript" src="{{asset('assets/js/plugins/notifications/sweet_alert.min.js')}}"></script>
 
 
     <script type="text/javascript">
@@ -43,8 +44,8 @@
 
 <script src="{{asset('assets/lib/fancybox/source/jquery.fancybox.js')}}"></script>
 
-
-
+<script type="text/javascript" src="{{asset('assets/js/plugins/forms/selects/bootstrap_multiselect.js')}}"></script>
+<script src="{{asset('assets/check-all/js/jquery-check-all.js')}}"></script>
 <!-- /theme JS files -->
 <script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
 <!--custom admin js -->

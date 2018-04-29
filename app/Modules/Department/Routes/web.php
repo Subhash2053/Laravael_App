@@ -25,7 +25,7 @@ Route::group(['prefix' => 'dashboard/department'], function () {
     Route::get('department/{id}', ['as' => 'department.show', 'uses' => 'DepartmentController@show'])->where('id', '[0-9]+');
 
 // EDIT | UPDATE
-    Route::get('department/{id}/edit', ['as' => 'department.edit', 'uses' => 'DepartmentController@edit'])->where('id', '[0-9]+');
+    Route::get('/{id}/edit', ['as' => 'department.edit', 'uses' => 'DepartmentController@edit'])->where('id', '[0-9]+');
     Route::put('department/{id}', ['as' => 'department.update', 'uses' => 'DepartmentController@update'])->where('id', '[0-9]+');
 
 // DELETE

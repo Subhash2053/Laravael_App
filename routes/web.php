@@ -23,5 +23,6 @@ Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 Route::get('standalone-filemanager/{filed_id}/{type?}',
     ['as' => 'standalone-filemanager', 'uses' => 'FilemanagerController@standalone']);
 Route::post('upload/image', ['as' => 'uploadImage', 'uses' => 'FilemanagerController@uploadImage']);
+Route::get('/loadData','AjaxController@loadData');
 
 

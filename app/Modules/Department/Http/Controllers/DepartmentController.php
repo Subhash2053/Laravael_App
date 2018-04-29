@@ -24,8 +24,10 @@ class DepartmentController extends Controller
     public function index(Request $request)
     {
        $departments= Department::paginate(8);
+       $json=json_encode($departments);
+       //dd($json);
 
-        return view('department::index',compact('departments'));
+        return view('department::index',compact('departments','json'));
     }
 
     public function create()
@@ -53,18 +55,55 @@ class DepartmentController extends Controller
     {
         $department = $this->department->find($id);
 
-        return view('department::Department.show', compact('department'));
+        return view('department::show', compact('department'));
     }
 
     public function edit($id)
     {
         $department = $this->department->find($id);
 
-        return view('department::Department.edit', compact('department'));
+        return view('department::edit', compact('department'));
     }
 
 
-  /*  public function update(DepartmentFormRequest $request, $id)
+
+    public function destroy(Request $request)
+    {
+        $ids = $request->all();
+        //dd($ids);
+
+        try {
+            if ($request->has('toDelete')) {
+                $this->department->delete($ids['toDelete']);
+                Flash::success("Department deleted Successfully");
+            } else {
+                Flash::error("Please check at least one to delete");
+            }
+        } catch (\Throwable $e) {
+            Flash::error($e->getMessage());
+        }
+
+        return redirect(route('department.index'));
+    }
+    public function delete($id)
+    {
+
+        try {
+            if ($id) {
+                $this->department->delete($id);
+                Flash::success("Department deleted Successfully");
+            } else {
+                Flash::error("Please check at least one to delete");
+            }
+        } catch (\Throwable $e) {
+            Flash::error($e->getMessage());
+        }
+
+        return redirect(route('banner.index'));
+    }
+
+
+   public function update(DepartmentFormRequest $request, $id)
     {
 
         try {
@@ -83,40 +122,9 @@ class DepartmentController extends Controller
         }
     }
 
-    public function destroy(Request $request)
-    {
-        $ids = $request->all();
 
-        try {
-            if ($request->has('toDelete')) {
-                $this->department->delete($ids['toDelete']);
-                Flash::success("Department deleted Successfully");
-            } else {
-                Flash::error("Please check at least one to delete");
-            }
-        } catch (\Throwable $e) {
-            Flash::error($e->getMessage());
-        }
 
-        return redirect(route('department.index'));
-    }
 
-    public function delete($id)
-    {
-
-        try {
-            if ($id) {
-                $this->department->delete($id);
-                Flash::success("Department deleted Successfully");
-            } else {
-                Flash::error("Please check at least one to delete");
-            }
-        } catch (\Throwable $e) {
-            Flash::error($e->getMessage());
-        }
-
-        return redirect(route('banner.index'));
-    }*/
 
 
 
