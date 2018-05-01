@@ -25,7 +25,7 @@ class CreateVacancyTable extends Migration
             $table->string('designation')->nullable();
             $table->string('specialization')->nullable();
             $table->string('degree')->nullable();
-            
+
 
             $table->timestamps();
         });
