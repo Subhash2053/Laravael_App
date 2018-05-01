@@ -20,7 +20,7 @@
         </div>
         <div class="panel-heading">
             <div class="col-xs-5">
-                <form action="{{ URL::to('employee/index') }}" method="GET">
+                <form action="{{ URL::to('dashboard/employee/index') }}" method="GET">
                     <div class="form-group input-group">
                         <input type="text" name="q" class="form-control" placeholder="Search Banner" required/>
                         <label class="input-group-btn">
@@ -42,13 +42,7 @@
                         </button>
                     </a>
                 </li>
-                <li>
-                    <a href="{{URL::to('dashboard/employee/index')}}">
-                        <button type="button" class="btn bg-green-800 btn-labeled btn-rounded legitRipple">
-                            <b><i class="icon-reload-alt"></i></b> Reset
-                        </button>
-                    </a>
-                </li>
+
                 <li>
                     <button type="button" class="btn bg-pink-800 btn-labeled btn-rounded legitRipple"
                             onclick="confirmAndSubmitForm()">
@@ -63,6 +57,7 @@
         <div class="panel-body">
             @include('flash::message')
         </div>
+        {!! Form::open(['route' => 'employee.destroy','method'=>'DELETE','id'=>'formDelete']) !!}
 
 
         <div class="table-responsive">
@@ -70,7 +65,7 @@
                 <thead>
                 <tr>
                     <th>
-                        <a href="{{ URL::to('employee/index') }}">
+                        <a href="{{ URL::to('dashboard/employee/index') }}">
                             ID
                             <span><i class="fa fa-sort text-success"></i></span>
                         </a>
@@ -86,7 +81,7 @@
                     </th>
                     <th>Image</th>
                     <th>
-                        <a href="{{ URL::to('employee/index') }}">
+                        <a href="{{ URL::to('dashboard/employee/index') }}">
                             Name
                             <span><i class="fa fa-sort text-success"></i></span>
                         </a>
@@ -95,7 +90,7 @@
                     <th>Status</th>
                     <th>Department</th>
                     <th>
-                        <a href="{{ URL::to('employee/index') }}"
+                        <a href="{{ URL::to('dashboard/employee/index') }}"
                            class="grey">
                             Created Date
                             <span><i class="fa fa-sort text-success"></i></span>
@@ -111,7 +106,7 @@
                         <td>{{$employee->id}}</td>
                         <td>
                             <div class="pretty p-default">
-
+                                {!! Form::checkbox('toDelete[]',$employee->id, false,['class'=>'checkItem']) !!}
                                 <div class="state">
                                     <label></label>
                                 </div>
@@ -189,8 +184,10 @@
 
             </table>
         </div>
+        {!! Form::close() !!}
 
     </div>
+
     <!-- /highlighting rows and columns -->
 
 

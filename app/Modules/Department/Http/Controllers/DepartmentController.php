@@ -51,12 +51,7 @@ class DepartmentController extends Controller
 
         return redirect(route('department.index'));
     }
-    public function show($id)
-    {
-        $department = $this->department->find($id);
 
-        return view('department::show', compact('department'));
-    }
 
     public function edit($id)
     {
