@@ -27,12 +27,12 @@ class DepartmentFormRequest extends FormRequest
 
             case 'POST':
                 return [
-                    'title' => 'required|unique:departments',
+                    'title' => 'required',
                     'sort_order' => 'required|numeric|min:1',
                 ];
             case 'PUT':
                 return [
-                    'title' => 'required|unique:departments,title,' . $this->route('id'),
+                    'title' => 'required' . $this->route('id'),
                     'sort_order' => 'required|numeric|min:1',
                 ];
             default:

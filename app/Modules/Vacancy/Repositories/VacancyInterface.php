@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Modules\Employee\Repositories;
+namespace App\Modules\Vacancy\Repositories;
 
 
 interface VacancyInterface

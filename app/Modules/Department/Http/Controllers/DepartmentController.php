@@ -38,6 +38,7 @@ class DepartmentController extends Controller
     public function store(DepartmentFormRequest $request)
     {
         $input = $request->all();
+        //dd($input);
 
 
         try {

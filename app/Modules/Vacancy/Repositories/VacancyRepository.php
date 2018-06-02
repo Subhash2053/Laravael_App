@@ -3,7 +3,9 @@
 
 namespace App\Modules\Vacancy\Repositories;
 
-use App\Modules\Vacancy\Repositories\VacancyInterface;
+
+
+use App\Modules\Vacancy\Models\Vacancy;
 
 class VacancyRepository implements VacancyInterface
 {
@@ -33,7 +35,7 @@ class VacancyRepository implements VacancyInterface
 
     public function save($data)
     {
-        $data['status'] = 1;
+        //$data['status'] = 1;
 
         return Vacancy::create($data);
     }

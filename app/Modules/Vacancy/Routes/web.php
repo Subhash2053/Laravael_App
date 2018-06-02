@@ -11,8 +11,28 @@
 |
 */
 
-Route::group(['prefix' => 'vacancy'], function () {
-    Route::get('/', function () {
-        dd('This is the Vacancy module index page. Build something great!');
-    });
+Route::group(['prefix' => 'dashboard/vacancy','middleware' => [ 'auth']], function () {
+
+    Route::get('/', 'VacancyController@index')->name('vacancy.index');
+    Route::get('/create', 'VacancyController@create')->name('vacancy.create');
+
+
+
+
+
+    Route::post('/vacancy', ['as' => 'vacancy.store', 'uses' => 'VacancyController@store']);
+
+// SHOW
+    Route::get('/{id}', ['as' => 'vacancy.show', 'uses' => 'VacancyController@show'])->where('id', '[0-9]+');
+
+// EDIT | UPDATE
+    Route::get('/{id}/edit', ['as' => 'vacancy.edit', 'uses' => 'VacancyController@edit'])->where('id', '[0-9]+');
+    Route::put('/{id}', ['as' => 'vacancy.update', 'uses' => 'VacancyController@update'])->where('id', '[0-9]+');
+
+// DELETE
+    Route::delete('vacancy', ['as' => 'vacancy.destroy', 'uses' => 'VacancyController@destroy']);
+    Route::get('/{id}/delete', ['as' => 'vacancy.delete', 'uses' => 'VacancyController@delete']);
+
+    Route::get('/status', ['as' => 'vacancy.status', 'uses' => 'VacancyController@status']);
+
 });

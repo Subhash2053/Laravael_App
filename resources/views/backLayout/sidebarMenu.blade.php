@@ -59,8 +59,8 @@
         </li>
         <li><a><i class="icon-eye"></i>&nbsp; Vacancy<span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
-            <li><a href="form.html">Add New</a></li>
-            <li><a href="form_advanced.html">View All</a></li>
+            <li><a href="{{URL::to('dashboard/vacancy/create')}}">Add New</a></li>
+            <li><a href="{{URL::to('dashboard/vacancy')}}">View All</a></li>
             <li><a href="form_advanced.html">Manage</a></li>
 
           </ul>

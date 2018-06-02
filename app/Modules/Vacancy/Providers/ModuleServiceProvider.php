@@ -2,6 +2,8 @@
 
 namespace App\Modules\Vacancy\Providers;
 
+use App\Modules\Vacancy\Repositories\VacancyInterface;
+use App\Modules\Vacancy\Repositories\VacancyRepository;
 use Caffeinated\Modules\Support\ServiceProvider;
 
 class ModuleServiceProvider extends ServiceProvider
@@ -27,5 +29,9 @@ class ModuleServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
+        $this->vacancyRegister();
+    }
+    public function vacancyRegister(){
+        $this->app->bind(VacancyInterface::class, VacancyRepository::class);
     }
 }
